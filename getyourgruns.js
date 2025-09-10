@@ -228,18 +228,23 @@ function initializeAccordion() {
                     const otherId = otherHeader.getAttribute('data-accordion');
                     const otherContent = document.getElementById(otherId);
                     const otherIcon = otherHeader.querySelector('.accordion-icon');
+                    const otherItem = otherHeader.closest('.accordion-item');
                     
                     otherContent.classList.remove('active');
+                    otherItem.classList.remove('open');
                     otherIcon.textContent = '+';
                 }
             });
             
             // Toggle current accordion
+            const currentItem = this.closest('.accordion-item');
             if (targetContent.classList.contains('active')) {
                 targetContent.classList.remove('active');
+                currentItem.classList.remove('open');
                 icon.textContent = '+';
             } else {
                 targetContent.classList.add('active');
+                currentItem.classList.add('open');
                 icon.textContent = '−';
             }
         });

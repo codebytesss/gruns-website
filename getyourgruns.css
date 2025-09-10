@@ -235,7 +235,6 @@ body {
 .accordion-item {
     margin-bottom: 10px;
     overflow: hidden;
-    border-bottom: .8px solid #000;
     padding-bottom: 15px;
 }
 
@@ -247,6 +246,17 @@ body {
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-bottom: .8px solid #000;
+    padding-bottom: 15px;
+}
+
+.accordion-item.open .accordion-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.accordion-item.open {
+    border-bottom: .8px solid #000;
 }
 
 
@@ -685,8 +695,8 @@ body {
     
     .nutrition-button {
         margin-top: 0;
-        width: 80%;
-        max-width: 400px;
+        width: 100%;
+        max-width: none;
     }
     
     .offer-section {
@@ -712,8 +722,10 @@ body {
     
     .shipping-info {
         display: flex;
-        align-items: center;
-        justify-content: start;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 400px;
+        text-align: left;
     }
 }
 
