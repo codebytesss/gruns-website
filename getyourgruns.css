@@ -29,7 +29,7 @@ body {
 .gruns-title {
     font-size: 28px;
     font-weight: 700;
-    color: #2E7D32;
+    color: #007E40;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
@@ -65,7 +65,7 @@ body {
 }
 
 .star.filled {
-    color: #2E7D32;
+    color: #007E40;
 }
 
 .rating-text {
@@ -78,7 +78,7 @@ body {
 .members-text {
     font-size: 13px;
     font-weight: 700;
-    color: #2E7D32;
+    color: #007E40;
 }
 
 .members-text .members-word {
@@ -141,7 +141,7 @@ body {
 }
 
 .thumbnail.active {
-    border-color: #4CAF50;
+    border-color: #007E40;
     transform: scale(1.1);
 }
 
@@ -174,8 +174,8 @@ body {
 }
 
 .nutrition-button:hover {
-    border-color: #4CAF50;
-    color: #4CAF50;
+    border-color: #007E40;
+    color: #007E40;
     box-shadow: 3px 3px 0px #000;
     transform: translateY(-1px);
 }
@@ -209,11 +209,11 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #2E7D32;
+    color: #007E40;
 }
 
 .shipping-icon svg {
-    stroke: #2E7D32;
+    stroke: #007E40;
 }
 
 .hsa-info {
