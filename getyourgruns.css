@@ -176,6 +176,244 @@ body {
     box-shadow: 2px 2px 0px #000;
 }
 
+/* Offer Section Styles */
+.offer-section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.offer-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2E7D32;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.sugar-tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.sugar-tab {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sugar-tab.active {
+    background-color: #2E7D32;
+    color: white;
+}
+
+.sugar-tab:not(.active) {
+    background-color: #E8F5E8;
+    color: #333;
+}
+
+.flavor-section {
+    margin-bottom: 25px;
+}
+
+.flavor-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.flavor-options {
+    display: flex;
+    gap: 10px;
+}
+
+.flavor-option {
+    flex: 1;
+    padding: 15px 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flavor-option.active {
+    border-color: #2E7D32;
+    background-color: #f8fff8;
+}
+
+.flavor-image {
+    margin-bottom: 8px;
+}
+
+.flavor-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.flavor-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.autoship-section {
+    margin-top: 25px;
+}
+
+.autoship-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.person-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.person-tab {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.person-tab.active {
+    border-color: #2E7D32;
+    background-color: #f8fff8;
+    color: #2E7D32;
+}
+
+.pricing-content {
+    margin-bottom: 15px;
+}
+
+.pricing-set {
+    display: none;
+}
+
+.pricing-set.active {
+    display: block;
+}
+
+.pricing-option {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.pricing-option.active {
+    display: block;
+}
+
+.price-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+}
+
+.price-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.old-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.per-day {
+    font-size: 12px;
+    color: #2E7D32;
+    font-weight: 600;
+    margin: 0;
+}
+
+.discount-badge {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.benefits-list {
+    margin-bottom: 20px;
+}
+
+.benefit-item {
+    display: none;
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.benefit-item.active,
+.benefit-item.common {
+    display: block;
+}
+
+.checkmark {
+    color: #2E7D32;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+}
+
+.start-now-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-now-button:hover {
+    background-color: #1B5E20;
+    transform: translateY(-2px);
+}
+
 @media (min-width: 768px) {
     .gruns-container {
         max-width: 500px;
@@ -193,5 +431,14 @@ body {
     .thumbnail {
         width: 60px;
         height: 60px;
+    }
+    
+    .flavor-options {
+        gap: 15px;
+    }
+    
+    .flavor-image img {
+        width: 80px;
+        height: 80px;
     }
 }
