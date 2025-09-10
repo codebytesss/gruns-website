@@ -643,6 +643,57 @@ body {
     margin: 0 0 5px 0;
 }
 
+.tastes-like-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.tastes-like-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.taste-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.taste-option {
+    flex: 1;
+    text-align: center;
+}
+
+.taste-icon {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #2E7D32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+    background-color: white;
+}
+
+.taste-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.taste-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .desktop-content {
     display: flex;
     flex-direction: column;
