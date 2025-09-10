@@ -332,7 +332,7 @@ body {
 .offer-title {
     font-size: 20px;
     font-weight: 700;
-    color: #2E7D32;
+    color: #007E40;
     text-align: center;
     margin-bottom: 20px;
     letter-spacing: 0.5px;
@@ -360,7 +360,7 @@ body {
 }
 
 .sugar-tab.active {
-    background-color: #2E7D32;
+    background-color: #007E40;
     color: white;
 }
 
@@ -397,8 +397,8 @@ body {
 }
 
 .flavor-option.active {
-    border-color: #2E7D32;
-    background-color: #2E7D32;
+    border-color: #007E40;
+    background-color: #007E40;
 }
 
 .flavor-option .flavor-name {
@@ -424,7 +424,7 @@ body {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #2E7D32;
+    background-color: #007E40;
     color: white;
     width: 20px;
     height: 20px;
@@ -549,13 +549,13 @@ body {
 
 .per-day {
     font-size: 12px;
-    color: #2E7D32;
+    color: #007E40;
     font-weight: 600;
     margin: 0;
 }
 
 .discount-badge {
-    background-color: #2E7D32;
+    background-color: #007E40;
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
@@ -584,7 +584,7 @@ body {
 }
 
 .checkmark {
-    color: #2E7D32;
+    color: #007E40;
     font-weight: 700;
     position: absolute;
     left: 0;
@@ -593,7 +593,7 @@ body {
 .start-now-button {
     width: 100%;
     padding: 15px;
-    background-color: #2E7D32;
+    background-color: #007E40;
     color: white;
     border: .8px solid #000;
     border-radius: 25px;
@@ -633,7 +633,7 @@ body {
 }
 
 .try-once-card:hover {
-    border-color: #2E7D32;
+    border-color: #007E40;
 }
 
 .try-once-info h4 {
@@ -670,7 +670,7 @@ body {
 .taste-icon {
     width: 80px;
     height: 80px;
-    border: 2px solid #2E7D32;
+    border: 2px solid #007E40;
     border-radius: 50%;
     display: flex;
     align-items: center;
