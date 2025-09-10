@@ -65,7 +65,7 @@ body {
 }
 
 .star.filled {
-    color: #4CAF50;
+    color: #2E7D32;
 }
 
 .rating-text {
@@ -79,6 +79,10 @@ body {
     font-size: 13px;
     font-weight: 700;
     color: #4CAF50;
+}
+
+.members-text .members-word {
+    color: #333;
 }
 
 .product-gallery {
