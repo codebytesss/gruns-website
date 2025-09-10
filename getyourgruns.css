@@ -51,7 +51,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 0;
 }
 
 .stars {
@@ -79,6 +79,8 @@ body {
     font-size: 13px;
     font-weight: 700;
     color: #007E40;
+    display: inline;
+    margin-left: 8px;
 }
 
 .members-text .members-word {
@@ -726,19 +728,6 @@ body {
         margin-bottom: 40px;
     }
     
-    .rating-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 0;
-    }
-    
-    .members-text {
-        display: inline;
-        margin-left: 8px;
-        margin-bottom: 0;
-    }
     
     .gruns-title {
         font-size: 32px;
