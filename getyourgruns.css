@@ -113,12 +113,18 @@ body {
 
 .thumbnail-container {
     display: flex;
-    gap: 6px;
-    justify-content: center;
+    gap: 14px;
+    justify-content: flex-start;
     flex-wrap: nowrap;
-    padding: 0 10px;
+    padding: 0;
     overflow: visible;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .thumbnail-container {
+        gap: 8px;
+    }
 }
 
 .thumbnail {
@@ -162,6 +168,8 @@ body {
     transition: all 0.3s ease;
     box-shadow: 3px 3px 0px #000;
     position: relative;
+    margin: 20px auto;
+    display: block;
 }
 
 .nutrition-button:hover {
@@ -174,6 +182,37 @@ body {
 .nutrition-button:active {
     transform: translateY(0);
     box-shadow: 2px 2px 0px #000;
+}
+
+.shipping-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.shipping-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.shipping-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #2E7D32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
 }
 
 /* Offer Section Styles */
@@ -323,10 +362,11 @@ body {
 
 .autoship-section {
     margin-top: 25px;
-    border: 2px solid #e0e0e0;
+    border: .8px solid #000;
     border-radius: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0px #000;
 }
 
 .autoship-title {
@@ -400,8 +440,8 @@ body {
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: bolder;
     min-width: 70px;
     text-align: center;
 }
@@ -447,6 +487,33 @@ body {
 .start-now-button:hover {
     background-color: #1B5E20;
     transform: translateY(-2px);
+}
+
+.try-once-section {
+    margin-top: 20px;
+}
+
+.try-once-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px;
+    border: .8px solid #000;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.try-once-card:hover {
+    border-color: #2E7D32;
+}
+
+.try-once-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
 }
 
 .desktop-content {
@@ -514,6 +581,7 @@ body {
     
     .main-image-container {
         height: 450px;
+        margin-bottom: 15px;
     }
     
     .thumbnail {
@@ -523,6 +591,8 @@ body {
     
     .nutrition-button {
         margin-top: 0;
+        width: 80%;
+        max-width: 400px;
     }
     
     .offer-section {
@@ -540,5 +610,19 @@ body {
     
     .autoship-section {
         padding: 25px;
+    }
+    
+    .try-once-section {
+        display: block;
+    }
+    
+    .shipping-info {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .shipping-info {
+        display: none;
     }
 }
