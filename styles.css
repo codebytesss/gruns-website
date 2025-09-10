@@ -1,0 +1,399 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* MOBILE FIRST STYLES */
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Scrolling promotional banner */
+.promo-banner {
+    background-color: #C53030;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+}
+
+.promo-text {
+    display: inline-block;
+    animation: scrollText 20s linear infinite;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Main header - Mobile styles */
+.main-header {
+    background-color: #2D7A3E;
+    padding: 12px 0;
+}
+
+.main-header .container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Header top row */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.nav-btn {
+    background-color: #FFD700; /* Gold background instead of transparent */
+    border: none; /* Remove borders */
+    color: #2D7A3E; /* Dark green text */
+    padding: 10px 20px;
+    border-radius: 20px; /* Individual rounded corners */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 5px; /* Add spacing between buttons */
+}
+
+
+
+.nav-btn:hover {
+    background-color: #FFD700;
+    color: #2D7A3E;
+}
+
+/* Logo styles */
+.logo-img {
+    height: 32px;
+    width: auto;
+}
+
+/* Account link - hidden on mobile */
+.account-link {
+    display: none;
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.account-link:hover {
+    color: white;
+}
+
+/* Cart styles */
+.cart {
+    position: relative;
+    cursor: pointer;
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #FFD700;
+    color: #2D7A3E;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* FLOATING TRY GRÜNS BUTTON */
+.floating-try-gruns {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #2D7A3E;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(45, 122, 62, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(100px);
+    pointer-events: none;
+    z-index: 999;
+}
+
+.floating-try-gruns.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.floating-try-gruns:hover {
+    background-color: #1e5a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(45, 122, 62, 0.4);
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 768px) {
+    /* Desktop banner adjustments */
+    .promo-text {
+        font-size: 16px;
+    }
+
+    /* Desktop header adjustments */
+    .main-header {
+        padding: 16px 0;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    /* Show account link on desktop */
+    .account-link {
+        display: block;
+    }
+
+    /* Desktop navigation buttons */
+    .nav-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Desktop cart adjustments */
+    .cart-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .cart-count {
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+    }
+
+    /* Desktop floating button adjustments */
+    .floating-try-gruns {
+        top: 40px;
+        right: 40px;
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+}
+
+/* HERO SECTION */
+.hero {
+    background-color: #F7F9FA;
+    padding: 40px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Hero Image */
+.hero-image {
+    text-align: center;
+    order: 1;
+}
+
+.product-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+}
+
+/* Hero Text */
+.hero-text {
+    text-align: center;
+    max-width: 500px;
+    order: 2;
+}
+
+/* Social Proof */
+.social-proof {
+    margin-bottom: 32px;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.star {
+    color: #FFD700;
+    font-size: 18px;
+}
+
+.rating-text {
+    font-size: 14px;
+    color: #4A5568;
+    margin-left: 8px;
+}
+
+.members {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2D7A3E;
+}
+
+/* Hero Heading */
+.hero-heading {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #2D3748;
+    margin-bottom: 24px;
+}
+
+.green-text {
+    color: #2D7A3E;
+}
+
+/* Hero Description */
+.hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4A5568;
+    margin-bottom: 32px;
+}
+
+/* STANDARDIZED BUTTON STYLES */
+.cta-btn {
+    background-color: #2D7A3E;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(45, 122, 62, 0.3);
+    margin-bottom: 32px;
+}
+
+.cta-btn:hover {
+    background-color: #1e5a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 122, 62, 0.4);
+}
+
+/* Additional Info */
+.additional-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #4A5568;
+}
+
+.info-item .icon {
+    font-size: 16px;
+}
+
+/* DESKTOP HERO STYLES */
+@media (min-width: 768px) {
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero-content {
+        flex-direction: row;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .hero-image {
+        order: 2;
+        flex: 1;
+    }
+
+    .hero-text {
+        order: 1;
+        flex: 1;
+        text-align: left;
+        max-width: none;
+    }
+
+    .stars {
+        justify-content: flex-start;
+    }
+
+    .hero-heading {
+        font-size: 48px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .additional-info {
+        align-items: flex-start;
+    }
+
+    .product-img {
+        max-height: 500px;
+    }
+}
