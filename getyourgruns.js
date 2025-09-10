@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Offer section functionality
     initializeOfferSection();
+    
+    // Initialize accordion
+    initializeAccordion();
 });
 
 function initializeOfferSection() {
@@ -209,3 +212,37 @@ function initializeOfferSection() {
     updatePricingDisplay();
     updateBenefitsDisplay();
 }
+
+function initializeAccordion() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-accordion');
+            const targetContent = document.getElementById(targetId);
+            const icon = this.querySelector('.accordion-icon');
+            
+            // Close all other accordions
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    const otherId = otherHeader.getAttribute('data-accordion');
+                    const otherContent = document.getElementById(otherId);
+                    const otherIcon = otherHeader.querySelector('.accordion-icon');
+                    
+                    otherContent.classList.remove('active');
+                    otherIcon.textContent = '+';
+                }
+            });
+            
+            // Toggle current accordion
+            if (targetContent.classList.contains('active')) {
+                targetContent.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                targetContent.classList.add('active');
+                icon.textContent = '−';
+            }
+        });
+    });
+}
+

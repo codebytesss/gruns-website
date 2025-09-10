@@ -215,9 +215,92 @@ body {
     flex-shrink: 0;
 }
 
+.hsa-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.hsa-info strong u {
+    color: #2E7D32;
+    cursor: pointer;
+}
+
+.accordion-section {
+    margin-top: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border: .8px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f5f5f5;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.accordion-icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2E7D32;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    display: none;
+    padding: 0 20px 20px 20px;
+    background-color: white;
+    border-top: .8px solid #e0e0e0;
+}
+
+.accordion-content.active {
+    display: block;
+}
+
+.accordion-content p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+.comparison-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
 /* Offer Section Styles */
 .offer-section {
-    width: 100%;
+    width: 90%;
     margin-top: 30px;
 }
 
@@ -625,7 +708,9 @@ body {
     }
     
     .shipping-info {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: start;
     }
 }
 
