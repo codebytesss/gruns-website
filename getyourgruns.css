@@ -221,7 +221,7 @@ body {
 }
 
 .hsa-info strong u {
-    color: #2E7D32;
+    color: #000;
     cursor: pointer;
 }
 
@@ -240,7 +240,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 15px 0;
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -258,15 +258,23 @@ body {
 }
 
 .accordion-icon {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #2E7D32;
     transition: transform 0.3s ease;
+    width: 30px;
+    height: 30px;
+    border: .8px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
 }
 
 .accordion-content {
     display: none;
-    padding: 0 20px 20px 20px;
+    padding: 0;
     background-color: white;
 }
 
