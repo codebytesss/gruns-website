@@ -194,8 +194,10 @@ body {
 .sugar-tabs {
     display: flex;
     margin-bottom: 25px;
+    background-color: #E8F5E8;
     border-radius: 25px;
     overflow: hidden;
+    padding: 4px;
 }
 
 .sugar-tab {
@@ -206,6 +208,8 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: 20px;
+    background-color: transparent;
 }
 
 .sugar-tab.active {
@@ -214,7 +218,7 @@ body {
 }
 
 .sugar-tab:not(.active) {
-    background-color: #E8F5E8;
+    background-color: transparent;
     color: #333;
 }
 
@@ -246,11 +250,39 @@ body {
 
 .flavor-option.active {
     border-color: #2E7D32;
-    background-color: #f8fff8;
+    background-color: #2E7D32;
+}
+
+.flavor-option.active .flavor-name {
+    color: white;
 }
 
 .flavor-image {
     margin-bottom: 8px;
+    position: relative;
+}
+
+.flavor-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #2E7D32;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.flavor-option.active .flavor-icon {
+    opacity: 1;
 }
 
 .flavor-image img {
@@ -278,32 +310,7 @@ body {
     margin-bottom: 15px;
 }
 
-.person-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.person-tab {
-    flex: 1;
-    padding: 10px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: white;
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.person-tab.active {
-    border-color: #2E7D32;
-    background-color: #f8fff8;
-    color: #2E7D32;
-}
-
-.pricing-content {
+.pricing-options {
     margin-bottom: 15px;
 }
 
@@ -312,16 +319,9 @@ body {
 }
 
 .pricing-set.active {
-    display: block;
-}
-
-.pricing-option {
-    display: none;
-    margin-bottom: 10px;
-}
-
-.pricing-option.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .price-card {
@@ -332,6 +332,13 @@ body {
     border: 2px solid #e0e0e0;
     border-radius: 12px;
     background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.price-card.active {
+    border-color: #2E7D32;
+    background-color: #f8fff8;
 }
 
 .price-info h4 {
@@ -363,7 +370,7 @@ body {
 }
 
 .discount-badge {
-    background-color: #dc3545;
+    background-color: #2E7D32;
     color: white;
     padding: 6px 12px;
     border-radius: 15px;

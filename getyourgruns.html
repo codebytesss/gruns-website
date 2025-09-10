@@ -71,13 +71,15 @@
                 <div class="flavor-options">
                     <div class="flavor-option active" data-flavor="original">
                         <div class="flavor-image">
-                            <img src="https://via.placeholder.com/120x120/4CAF50/white?text=Original" alt="Original Flavor">
+                            <div class="flavor-icon">✓</div>
+                            <img src="getyourgrunsImages/gruns-original.png" alt="Original Flavor" onerror="this.src='https://via.placeholder.com/120x120/4CAF50/white?text=Original'">
                         </div>
                         <p class="flavor-name">Original</p>
                     </div>
                     <div class="flavor-option" data-flavor="grunny">
                         <div class="flavor-image">
-                            <img src="https://via.placeholder.com/120x120/8B4513/white?text=Grunny" alt="Grünny Smith Apple">
+                            <div class="flavor-icon">✓</div>
+                            <img src="getyourgrunsImages/gruns-apple.png" alt="Grünny Smith Apple" onerror="this.src='https://via.placeholder.com/120x120/FF6B6B/white?text=Apple'">
                         </div>
                         <p class="flavor-name">Grünny Smith Apple</p>
                     </div>
@@ -87,57 +89,44 @@
             <div class="autoship-section">
                 <h3 class="autoship-title">AutoShip & Save</h3>
                 
-                <div class="person-tabs">
-                    <button class="person-tab active" data-person="one">One Person</button>
-                    <button class="person-tab" data-person="two">Two People</button>
-                </div>
-
-                <div class="pricing-content">
+                <div class="pricing-options">
                     <!-- Original Flavor Pricing -->
                     <div class="pricing-set active" data-flavor="original">
-                        <div class="pricing-option" data-person="one">
-                            <div class="price-card">
-                                <div class="price-info">
-                                    <h4>One Person</h4>
-                                    <div class="price">$48.00 <span class="old-price">$79.99</span></div>
-                                    <p class="per-day">$1.71 Per Day</p>
-                                </div>
-                                <div class="discount-badge">40% off</div>
+                        <div class="price-card active" data-person="one">
+                            <div class="price-info">
+                                <h4>One Person</h4>
+                                <div class="price">$48.00 <span class="old-price">$79.99</span></div>
+                                <p class="per-day">$1.71 Per Day</p>
                             </div>
+                            <div class="discount-badge">40% off</div>
                         </div>
-                        <div class="pricing-option" data-person="two">
-                            <div class="price-card">
-                                <div class="price-info">
-                                    <h4>Two People</h4>
-                                    <div class="price">$91.20 <span class="old-price">$159.98</span></div>
-                                    <p class="per-day">$1.63 Per Day</p>
-                                </div>
-                                <div class="discount-badge">43% off</div>
+                        <div class="price-card" data-person="two">
+                            <div class="price-info">
+                                <h4>Two People</h4>
+                                <div class="price">$91.20 <span class="old-price">$159.98</span></div>
+                                <p class="per-day">$1.63 Per Day</p>
                             </div>
+                            <div class="discount-badge">43% off</div>
                         </div>
                     </div>
 
                     <!-- Grünny Smith Apple Flavor Pricing -->
                     <div class="pricing-set" data-flavor="grunny">
-                        <div class="pricing-option" data-person="one">
-                            <div class="price-card">
-                                <div class="price-info">
-                                    <h4>One Person</h4>
-                                    <div class="price">$51.00 <span class="old-price">$84.98</span></div>
-                                    <p class="per-day">$1.82 Per Day</p>
-                                </div>
-                                <div class="discount-badge">40% off</div>
+                        <div class="price-card active" data-person="one">
+                            <div class="price-info">
+                                <h4>One Person</h4>
+                                <div class="price">$51.00 <span class="old-price">$84.98</span></div>
+                                <p class="per-day">$1.82 Per Day</p>
                             </div>
+                            <div class="discount-badge">40% off</div>
                         </div>
-                        <div class="pricing-option" data-person="two">
-                            <div class="price-card">
-                                <div class="price-info">
-                                    <h4>Two People</h4>
-                                    <div class="price">$96.90 <span class="old-price">$169.96</span></div>
-                                    <p class="per-day">$1.73 Per Day</p>
-                                </div>
-                                <div class="discount-badge">43% off</div>
+                        <div class="price-card" data-person="two">
+                            <div class="price-info">
+                                <h4>Two People</h4>
+                                <div class="price">$96.90 <span class="old-price">$169.96</span></div>
+                                <p class="per-day">$1.73 Per Day</p>
                             </div>
+                            <div class="discount-badge">43% off</div>
                         </div>
                     </div>
                 </div>

@@ -121,4 +121,91 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize
     updateActiveThumbnail();
+    
+    // Offer section functionality
+    initializeOfferSection();
 });
+
+function initializeOfferSection() {
+    const sugarTabs = document.querySelectorAll('.sugar-tab');
+    const flavorOptions = document.querySelectorAll('.flavor-option');
+    const priceCards = document.querySelectorAll('.price-card');
+    const pricingSets = document.querySelectorAll('.pricing-set');
+    const benefitItems = document.querySelectorAll('.benefit-item');
+    
+    let currentFlavor = 'original';
+    let currentPerson = 'one';
+    
+    // Sugar tabs functionality
+    sugarTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            sugarTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Flavor options functionality
+    flavorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            flavorOptions.forEach(o => o.classList.remove('active'));
+            this.classList.add('active');
+            
+            currentFlavor = this.dataset.flavor;
+            updatePricingDisplay();
+            updateBenefitsDisplay();
+        });
+    });
+    
+    // Price card functionality
+    priceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Only update selection within the same pricing set
+            const parentSet = this.closest('.pricing-set');
+            const siblingCards = parentSet.querySelectorAll('.price-card');
+            
+            siblingCards.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            
+            currentPerson = this.dataset.person;
+            updateBenefitsDisplay();
+        });
+    });
+    
+    function updatePricingDisplay() {
+        // Hide all pricing sets
+        pricingSets.forEach(set => set.classList.remove('active'));
+        
+        // Show current flavor pricing set
+        const currentPricingSet = document.querySelector(`[data-flavor="${currentFlavor}"].pricing-set`);
+        if (currentPricingSet) {
+            currentPricingSet.classList.add('active');
+            
+            // Set the correct price card as active
+            const priceCard = currentPricingSet.querySelector(`[data-person="${currentPerson}"].price-card`);
+            if (priceCard) {
+                currentPricingSet.querySelectorAll('.price-card').forEach(card => card.classList.remove('active'));
+                priceCard.classList.add('active');
+            }
+        }
+    }
+    
+    function updateBenefitsDisplay() {
+        // Hide all benefit items except common ones
+        benefitItems.forEach(item => {
+            if (item.classList.contains('common')) {
+                return; // Keep common items visible
+            }
+            item.classList.remove('active');
+        });
+        
+        // Show current combination benefit
+        const currentBenefit = document.querySelector(`[data-flavor="${currentFlavor}"][data-person="${currentPerson}"].benefit-item`);
+        if (currentBenefit) {
+            currentBenefit.classList.add('active');
+        }
+    }
+    
+    // Initialize display
+    updatePricingDisplay();
+    updateBenefitsDisplay();
+}
