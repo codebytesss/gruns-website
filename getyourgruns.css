@@ -247,19 +247,28 @@ body {
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-bottom: .8px solid #000;
-    padding-bottom: 15px;
+    position: relative;
+}
+
+.accordion-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: calc(100% - 40px);
+    height: .8px;
+    background-color: #000;
+    transition: width 0.3s ease;
 }
 
 .accordion-item.open .accordion-header {
     justify-content: space-between;
     gap: 0;
-    border-bottom: none;
-    padding-bottom: 0;
 }
 
-.accordion-item.open {
-    border-bottom: .8px solid #000;
+.accordion-item.open .accordion-header::after {
+    width: 100%;
 }
 
 
@@ -384,15 +393,26 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    background-color: white;
 }
 
 .flavor-option.active {
     border-color: #2E7D32;
-    background-color: #2E7D32;
+    background-color: white;
+}
+
+.flavor-option .flavor-name {
+    color: #333;
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .flavor-option.active .flavor-name {
     color: white;
+    background-color: #2E7D32;
 }
 
 .flavor-image {
