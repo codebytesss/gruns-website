@@ -398,7 +398,7 @@ body {
 
 .flavor-option.active {
     border-color: #2E7D32;
-    background-color: white;
+    background-color: #2E7D32;
 }
 
 .flavor-option .flavor-name {
@@ -412,7 +412,7 @@ body {
 
 .flavor-option.active .flavor-name {
     color: white;
-    background-color: #2E7D32;
+    background-color: transparent;
 }
 
 .flavor-image {
@@ -483,7 +483,7 @@ body {
     margin-top: 25px;
     border: .8px solid #000;
     border-radius: 20px;
-    padding: 2px;
+    padding: 20px;
     transition: all 0.3s ease;
     box-shadow: 3px 3px 0px #000;
 }
@@ -727,7 +727,7 @@ body {
     }
     
     .flavor-options {
-        gap: 15px;
+        gap: 3px;
     }
     
     .flavor-image img {
