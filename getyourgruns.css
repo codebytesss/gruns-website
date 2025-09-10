@@ -290,6 +290,28 @@ body {
     height: 60px;
     border-radius: 8px;
     object-fit: cover;
+    background-color: #4CAF50;
+    display: block;
+}
+
+.flavor-image img:before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.flavor-option[data-flavor="grunny"] .flavor-image img {
+    background-color: #FF6B6B;
+}
+
+.flavor-option[data-flavor="grunny"] .flavor-image img:before {
+    background-color: #FF6B6B;
 }
 
 .flavor-name {
