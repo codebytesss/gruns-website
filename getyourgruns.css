@@ -522,8 +522,8 @@ body {
 }
 
 .price-card.active {
-    border-color: #2E7D32;
-    background-color: white;
+    border-color: #000;
+    background-color: #DFEFE7;
 }
 
 .price-info h4 {
