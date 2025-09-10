@@ -251,6 +251,8 @@ body {
 }
 
 .accordion-item.open .accordion-header {
+    justify-content: space-between;
+    gap: 0;
     border-bottom: none;
     padding-bottom: 0;
 }
