@@ -6,7 +6,7 @@
 
 body {
     font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: white;
     min-height: 100vh;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .gruns-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
     color: #007E40;
     margin-bottom: 8px;
@@ -52,6 +52,7 @@ body {
     justify-content: center;
     gap: 8px;
     margin-bottom: 0;
+    flex-wrap: wrap;
 }
 
 .stars {
@@ -140,11 +141,15 @@ body {
     transition: all 0.3s ease;
     border: .8px solid #000;
     position: relative;
+    opacity: 0.6;
+    filter: blur(1px);
 }
 
 .thumbnail.active {
     border-color: #007E40;
     transform: scale(1.1);
+    opacity: 1;
+    filter: none;
 }
 
 .thumbnail img {
@@ -155,6 +160,8 @@ body {
 
 .thumbnail:hover {
     transform: scale(1.05);
+    opacity: 0.8;
+    filter: blur(0.5px);
 }
 
 .nutrition-button {
@@ -233,23 +240,25 @@ body {
 .accordion-section {
     margin-top: 30px;
     max-width: 400px;
+    width: 100%;
 }
 
 .accordion-item {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     overflow: hidden;
-    padding-bottom: 15px;
+    padding-bottom: 0;
 }
 
 .accordion-header {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 15px 0;
+    padding: 12px 0;
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    width: max-content;
 }
 
 .accordion-header::after {
@@ -257,8 +266,8 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: auto;
-    width: calc(100% - 40px);
+    right: 0;
+    width: 100%;
     height: .8px;
     background-color: #000;
     transition: width 0.3s ease;
@@ -389,27 +398,63 @@ body {
 
 .flavor-option {
     flex: 1;
-    padding: 15px 10px;
     border: .8px solid #000;
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: white;
+    position: relative;
+    border-radius: 10px;
+}
+
+.flavor-option::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    z-index: 0;
 }
 
 .flavor-option.active {
     border-color: #007E40;
+    background-color: white;
+    position: relative;
+}
+
+.flavor-option.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
     background-color: #007E40;
+    border-radius: 0 0 8px 8px;
+    z-index: 0;
 }
 
 .flavor-option .flavor-name {
-    color: #333;
+    color: #000;
     background-color: transparent;
-    padding: 8px 16px;
+    padding: 0;
     border-radius: 8px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
     transition: all 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: 0;
+    border-radius: 0 0 16px 16px;
 }
 
 .flavor-option.active .flavor-name {
@@ -418,8 +463,14 @@ body {
 }
 
 .flavor-image {
-    margin-bottom: 8px;
+    margin-bottom: 28px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-color: #E8F5E8;
+    border-radius: 10px;
 }
 
 .flavor-icon {
@@ -442,15 +493,13 @@ body {
 }
 
 .flavor-option.active .flavor-icon {
-    opacity: 1;
+    opacity: 0;
 }
 
 .flavor-image img {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
-    background-color: #007E40;
     display: block;
 }
 
@@ -459,26 +508,22 @@ body {
     display: block;
     width: 60px;
     height: 60px;
-    background-color: #007E40;
     border-radius: 8px;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.flavor-option[data-flavor="grunny"] .flavor-image img {
-    background-color: #FF6B6B;
-}
-
-.flavor-option[data-flavor="grunny"] .flavor-image img:before {
-    background-color: #FF6B6B;
+.flavor-option[data-flavor="grunny"] .flavor-image {
+    background-color: #FFE8E8;
 }
 
 .flavor-name {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
-    color: #333;
+    color: #000;
     margin: 0;
+    border-radius: 16px !important;
 }
 
 .autoship-section {
@@ -662,11 +707,14 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 15px;
+    margin-bottom: 30px;
 }
 
 .taste-option {
     flex: 1;
     text-align: center;
+    position: relative;
+    cursor: pointer;
 }
 
 .taste-icon {
@@ -696,6 +744,175 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Nutrition Items Section */
+.nutrition-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.nutrition-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.nutrition-item:hover {
+    background-color: #f9f9f9;
+}
+
+.nutrition-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.nutrition-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.nutrition-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    text-align: left;
+}
+
+/* Remove special styling for Herbs item */
+
+.nutrition-tooltip {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+/* Hover Tooltips - Only for nutrition items */
+.nutrition-item::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: #666;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: normal;
+    width: 280px;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    margin-top: 8px;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nutrition-item::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+    pointer-events: none;
+    margin-top: 3px;
+}
+
+.nutrition-item:hover::before,
+.nutrition-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Nutrition items with headings */
+.nutrition-item::before {
+    content: attr(data-title) ": " attr(data-tooltip);
+    top: 100%;
+    left: 60px;
+    transform: none;
+    margin-top: 8px;
+}
+
+.nutrition-item::after {
+    top: 100%;
+    left: 70px;
+    transform: none;
+    border-bottom-color: white;
+    border-top-color: transparent;
+    margin-top: 3px;
+}
+
+/* Add heading styling with spacing */
+.nutrition-item::before {
+    content: attr(data-title) "\A" attr(data-tooltip);
+    white-space: pre-line;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #f8f8f8 32px, white 32px, white 100%);
+    padding: 10px 16px 14px 16px;
+    line-height: 1.4;
+    color: #333;
+    font-size: 13px;
+}
+
+/* Make the title appear bold - first line is bold, rest is normal */
+.nutrition-item[data-title]::before {
+    font-weight: 600;
+}
+
+/* Better visual hierarchy simulation */
+.nutrition-item::before {
+    text-shadow: none;
+    letter-spacing: 0.2px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .nutrition-item::before {
+        width: 260px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+    }
+
+    .nutrition-item::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 .desktop-content {
     display: flex;
     flex-direction: column;
@@ -715,24 +932,33 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .gruns-header {
         width: 100%;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 12px;
     }
-    
+
     .gruns-rating {
         width: 100%;
         text-align: center;
         margin-bottom: 40px;
     }
-    
-    
-    .gruns-title {
-        font-size: 32px;
+
+    .rating-row {
+        flex-wrap: nowrap;
+        gap: 15px;
     }
-    
+
+    .members-text {
+        margin-left: 0;
+    }
+
+
+    .gruns-title {
+        font-size: 48px;
+    }
+
     .desktop-content {
         display: flex;
         flex-direction: row;
@@ -741,62 +967,63 @@ body {
         max-width: 1100px;
         align-items: flex-start;
     }
-    
+
     .left-column {
         flex: 1;
         display: flex;
         flex-direction: column;
         width: 50%;
     }
-    
+
     .right-column {
         flex: 1;
         display: flex;
         flex-direction: column;
         width: 50%;
     }
-    
+
     .product-gallery {
         margin-bottom: 30px;
     }
-    
+
     .main-image-container {
         height: 450px;
         margin-bottom: 15px;
     }
-    
+
     .thumbnail {
         width: 60px;
         height: 60px;
     }
-    
+
     .nutrition-button {
         margin-top: 0;
         width: 100%;
         max-width: none;
     }
-    
+
     .offer-section {
         margin-top: 0;
     }
-    
+
     .flavor-options {
-        gap: 3px;
+        gap: 16px;
+        margin-bottom: 36px;
     }
-    
+
     .flavor-image img {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
-    
+
     .autoship-section {
         padding: 25px;
     }
-    
+
     .try-once-section {
         display: block;
     }
-    
+
     .shipping-info {
         display: flex;
         flex-direction: column;
