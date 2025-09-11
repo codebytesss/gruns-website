@@ -1,15 +1,31 @@
+// Initialize when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Get the main app container to scope all queries and avoid conflicts
+    const appContainer = document.querySelector('.gruns-main-app');
+    if (!appContainer) {
+        console.error('Gruns main app container not found');
+        return;
+    }
+    
+    // Get image gallery elements
     const mainImage = document.getElementById('mainImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
+    const thumbnails = appContainer.querySelectorAll('.thumbnail');
     const thumbnailContainer = document.getElementById('thumbnailContainer');
-    const mainImageContainer = document.querySelector('.main-image-container');
+    const mainImageContainer = appContainer.querySelector('.main-image-container');
 
+    // Ensure critical elements exist before proceeding
+    if (!mainImage || !mainImageContainer || thumbnails.length === 0) {
+        console.error('Critical elements not found for Gruns functionality');
+        return;
+    }
+
+    // Variables for image navigation and touch handling
     let currentIndex = 0;
     let startX = 0;
     let startY = 0;
     let isSwipeDetected = false;
 
-    // Image sets for different flavors
+    // Image sets for different flavors - used when user switches flavors
     const imageSets = {
         original: [
             'images/Lifestyle_01_-_Adults.png',
@@ -31,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentFlavor = 'original';
 
-    // Handle thumbnail clicks
+    // Handle thumbnail clicks to change main image
     thumbnails.forEach((thumbnail, index) => {
         thumbnail.addEventListener('click', function () {
             const imageUrl = this.dataset.image;
@@ -39,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Touch events for swipe navigation on main image
+    // Touch events for mobile swipe navigation on main image
     mainImageContainer.addEventListener('touchstart', function (e) {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
@@ -54,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const diffX = startX - currentX;
         const diffY = startY - currentY;
 
-        // Only detect horizontal swipes (ignore vertical scrolling)
+        // Only detect horizontal swipes to avoid interfering with vertical scrolling
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
             isSwipeDetected = true;
-            e.preventDefault(); // Prevent scrolling when swiping
+            e.preventDefault(); // Prevent page scroll during horizontal swipe
         }
     });
 
@@ -67,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const endX = e.changedTouches[0].clientX;
         const diffX = startX - endX;
 
-        // Minimum swipe distance
+        // Require minimum swipe distance to prevent accidental triggers
         if (Math.abs(diffX) > 50) {
             if (diffX > 0) {
                 // Swipe left - next image
@@ -83,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         isSwipeDetected = false;
     });
 
-    // Keyboard navigation
+    // Keyboard navigation for accessibility
     document.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') {
             previousImage();
@@ -92,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Update main image and thumbnail states
     function changeMainImage(imageUrl, index) {
         mainImage.src = imageUrl;
         currentIndex = index;
@@ -99,18 +116,21 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollToActiveThumbnail();
     }
 
+    // Update visual state of thumbnails to show which is active
     function updateActiveThumbnail() {
         thumbnails.forEach((thumb, index) => {
             thumb.classList.toggle('active', index === currentIndex);
         });
     }
 
+    // Auto-scroll thumbnail container to keep active thumbnail visible
     function scrollToActiveThumbnail() {
         const activeThumbnail = thumbnails[currentIndex];
         const containerWidth = thumbnailContainer.offsetWidth;
         const thumbnailWidth = activeThumbnail.offsetWidth;
         const thumbnailOffsetLeft = activeThumbnail.offsetLeft;
 
+        // Center the active thumbnail in the container
         const scrollLeft = thumbnailOffsetLeft - (containerWidth / 2) + (thumbnailWidth / 2);
         thumbnailContainer.scrollTo({
             left: scrollLeft,
@@ -130,10 +150,11 @@ document.addEventListener('DOMContentLoaded', function () {
         changeMainImage(prevImageUrl, currentIndex);
     }
 
+    // Switch image gallery when flavor changes (called from offer section)
     function updateImageGallery(newFlavor) {
         const newImageSet = imageSets[newFlavor];
 
-        // Update all thumbnails
+        // Update all thumbnail images and data attributes
         thumbnails.forEach((thumbnail, index) => {
             if (newImageSet[index]) {
                 thumbnail.dataset.image = newImageSet[index];
@@ -144,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Update main image to maintain current position
+        // Update main image while keeping same position in gallery
         const newMainImageUrl = newImageSet[currentIndex];
         if (newMainImageUrl) {
             mainImage.src = newMainImageUrl;
@@ -170,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make updateImageGallery available globally
     window.updateImageGallery = updateImageGallery;
 
+
     // Offer section functionality
     initializeOfferSection();
 
@@ -180,18 +202,33 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeTryOnceToggle();
 });
 
+// Initialize the offer section with pricing, flavors, and sugar options
 function initializeOfferSection() {
-    const sugarTabs = document.querySelectorAll('.sugar-tab');
-    const flavorOptions = document.querySelectorAll('.flavor-option');
-    const priceCards = document.querySelectorAll('.price-card');
-    const pricingSets = document.querySelectorAll('.pricing-set');
-    const benefitItems = document.querySelectorAll('.benefit-item');
+    // Scope all queries to avoid conflicts with other page elements
+    const appContainer = document.querySelector('.gruns-main-app');
+    if (!appContainer) {
+        console.error('Gruns main app container not found in offer section');
+        return;
+    }
+    
+    // Get all interactive elements in the offer section
+    const sugarTabs = appContainer.querySelectorAll('.sugar-tab');
+    const flavorOptions = appContainer.querySelectorAll('.flavor-option');
+    const priceCards = appContainer.querySelectorAll('.price-card');
+    const pricingSets = appContainer.querySelectorAll('.pricing-set');
+    const benefitItems = appContainer.querySelectorAll('.benefit-item');
+
+    // Ensure critical elements exist
+    if (!sugarTabs.length || !flavorOptions.length) {
+        console.error('Critical offer section elements not found');
+        return;
+    }
 
     let currentFlavor = 'original';
     let currentPerson = 'one';
     let currentSugarType = 'low';
 
-    // Price data for different combinations
+    // Price data for different sugar/flavor combinations
     const priceData = {
         low: {
             original: {
@@ -215,7 +252,7 @@ function initializeOfferSection() {
         }
     };
 
-    // Try Once price data for different combinations
+    // One-time purchase pricing (no subscription)
     const tryOnceData = {
         low: {
             original: {
@@ -243,7 +280,7 @@ function initializeOfferSection() {
         }
     };
 
-    // Sugar tabs functionality
+    // Handle sugar tab switching (Low Sugar vs Sugar Free)
     sugarTabs.forEach(tab => {
         tab.addEventListener('click', function () {
             sugarTabs.forEach(t => t.classList.remove('active'));
@@ -256,7 +293,7 @@ function initializeOfferSection() {
         });
     });
 
-    // Flavor options functionality
+    // Handle flavor selection (Original vs Grünny Smith Apple)
     flavorOptions.forEach(option => {
         option.addEventListener('click', function () {
             flavorOptions.forEach(o => o.classList.remove('active'));
@@ -265,11 +302,12 @@ function initializeOfferSection() {
             const newFlavor = this.dataset.flavor;
             currentFlavor = newFlavor;
 
-            // Update image gallery
+            // Update image gallery to show new flavor images
             if (window.updateImageGallery) {
                 window.updateImageGallery(newFlavor);
             }
 
+            // Update all pricing and content for new flavor
             updatePricing();
             updatePricingDisplay();
             updateBenefitsDisplay();
@@ -277,10 +315,10 @@ function initializeOfferSection() {
         });
     });
 
-    // Price card functionality
+    // Handle price card selection (One Person vs Two People)
     priceCards.forEach(card => {
         card.addEventListener('click', function () {
-            // Only update selection within the same pricing set
+            // Only update selection within the same pricing set (flavor)
             const parentSet = this.closest('.pricing-set');
             const siblingCards = parentSet.querySelectorAll('.price-card');
 
@@ -288,10 +326,11 @@ function initializeOfferSection() {
             this.classList.add('active');
 
             currentPerson = this.dataset.person;
-            updateBenefitsDisplay();
+            updateBenefitsDisplay(); // Update benefits text based on selection
         });
     });
 
+    // Update displayed prices based on current sugar type and flavor
     function updatePricing() {
         console.log('updatePricing called with:', currentSugarType, currentFlavor);
         const pricing = priceData[currentSugarType][currentFlavor];
@@ -337,16 +376,17 @@ function initializeOfferSection() {
         });
     }
 
+    // Show/hide pricing sets based on selected flavor
     function updatePricingDisplay() {
-        // Hide all pricing sets
+        // Hide all pricing sets first
         pricingSets.forEach(set => set.classList.remove('active'));
 
-        // Show current flavor pricing set
-        const currentPricingSet = document.querySelector(`[data-flavor="${currentFlavor}"].pricing-set`);
+        // Show pricing set for current flavor
+        const currentPricingSet = appContainer.querySelector(`[data-flavor="${currentFlavor}"].pricing-set`);
         if (currentPricingSet) {
             currentPricingSet.classList.add('active');
 
-            // Set the correct price card as active
+            // Ensure correct price card remains selected
             const priceCard = currentPricingSet.querySelector(`[data-person="${currentPerson}"].price-card`);
             if (priceCard) {
                 currentPricingSet.querySelectorAll('.price-card').forEach(card => card.classList.remove('active'));
@@ -355,24 +395,26 @@ function initializeOfferSection() {
         }
     }
 
+    // Update benefits list based on current flavor and person selection
     function updateBenefitsDisplay() {
-        // Hide all benefit items except common ones
+        // Hide flavor/person-specific benefits, keep common ones visible
         benefitItems.forEach(item => {
             if (item.classList.contains('common')) {
-                return; // Keep common items visible
+                return; // Keep common benefits always visible
             }
             item.classList.remove('active');
         });
 
-        // Show current combination benefit
-        const currentBenefit = document.querySelector(`[data-flavor="${currentFlavor}"][data-person="${currentPerson}"].benefit-item`);
+        // Show benefit specific to current flavor and person count
+        const currentBenefit = appContainer.querySelector(`[data-flavor="${currentFlavor}"][data-person="${currentPerson}"].benefit-item`);
         if (currentBenefit) {
             currentBenefit.classList.add('active');
         }
     }
 
+    // Update one-time purchase pricing
     function updateTryOncePricing() {
-        const tryOnceCard = document.querySelector('.try-once-card');
+        const tryOnceCard = appContainer.querySelector('.try-once-card');
         if (!tryOnceCard) return;
 
         const pricing = tryOnceData[currentSugarType][currentFlavor];
@@ -396,8 +438,16 @@ function initializeOfferSection() {
     updateTryOncePricing();
 }
 
+// Initialize accordion functionality (FAQ sections)
 function initializeAccordion() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    // Scope queries to avoid conflicts
+    const appContainer = document.querySelector('.gruns-main-app');
+    if (!appContainer) {
+        console.error('Gruns main app container not found in accordion');
+        return;
+    }
+    
+    const accordionHeaders = appContainer.querySelectorAll('.accordion-header');
 
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function () {
@@ -405,7 +455,7 @@ function initializeAccordion() {
             const targetContent = document.getElementById(targetId);
             const icon = this.querySelector('.accordion-icon');
 
-            // Close all other accordions
+            // Close all other accordions (only one open at a time)
             accordionHeaders.forEach(otherHeader => {
                 if (otherHeader !== this) {
                     const otherId = otherHeader.getAttribute('data-accordion');
@@ -434,13 +484,23 @@ function initializeAccordion() {
     });
 }
 
+// Initialize try once card toggle functionality
 function initializeTryOnceToggle() {
+    // Scope check for safety
+    const appContainer = document.querySelector('.gruns-main-app');
+    if (!appContainer) {
+        console.error('Gruns main app container not found in try once toggle');
+        return;
+    }
+    
     const tryOnceCard = document.getElementById('tryOnceCard');
     
+    // Toggle expanded state to show/hide additional info
     if (tryOnceCard) {
         tryOnceCard.addEventListener('click', function() {
             this.classList.toggle('expanded');
         });
     }
 }
+
 
