@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let startX = 0;
     let startY = 0;
     let isSwipeDetected = false;
-    
+
     // Image sets for different flavors
     const imageSets = {
         original: [
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'images/Lifestyle_03_-_Adults.png'
         ],
         grunny: [
-            'images/gsa1.avif',
+            'images/gsa1.webp',
             'images/gsa2.webp',
             'images/gsa3.webp',
             'images/gsa4.webp',
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'images/gsa6.webp'
         ]
     };
-    
+
     let currentFlavor = 'original';
 
     // Handle thumbnail clicks
@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const prevImageUrl = imageSets[currentFlavor][currentIndex];
         changeMainImage(prevImageUrl, currentIndex);
     }
-    
+
     function updateImageGallery(newFlavor) {
         const newImageSet = imageSets[newFlavor];
-        
+
         // Update all thumbnails
         thumbnails.forEach((thumbnail, index) => {
             if (newImageSet[index]) {
@@ -143,13 +143,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-        
+
         // Update main image to maintain current position
         const newMainImageUrl = newImageSet[currentIndex];
         if (newMainImageUrl) {
             mainImage.src = newMainImageUrl;
         }
-        
+
         currentFlavor = newFlavor;
     }
 
@@ -175,6 +175,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize accordion
     initializeAccordion();
+
+    // Initialize try once toggle
+    initializeTryOnceToggle();
 });
 
 function initializeOfferSection() {
@@ -207,7 +210,35 @@ function initializeOfferSection() {
             },
             grunny: {
                 one: { price: '$55.80', oldPrice: '$92.98', perDay: '$1.99', discount: '40%' },
-                two: { price: '$106.20', oldPrice: '$185.96', perDay: '$1.90', discount: '43%' }
+                two: { price: '$106.02', oldPrice: '$185.96', perDay: '$1.89', discount: '43%' }
+            }
+        }
+    };
+
+    // Try Once price data for different combinations
+    const tryOnceData = {
+        low: {
+            original: {
+                price: '$64.00',
+                oldPrice: '$79.99',
+                perDay: '$2.29'
+            },
+            grunny: {
+                price: '$67.98',
+                oldPrice: '$84.98',
+                perDay: '$2.43'
+            }
+        },
+        free: {
+            original: {
+                price: '$70.40',
+                oldPrice: '$87.99',
+                perDay: '$2.51'
+            },
+            grunny: {
+                price: '$74.39',
+                oldPrice: '$92.98',
+                perDay: '$2.65'
             }
         }
     };
@@ -221,6 +252,7 @@ function initializeOfferSection() {
             currentSugarType = this.dataset.sugar;
             console.log('Sugar type changed to:', currentSugarType);
             updatePricing();
+            updateTryOncePricing();
         });
     });
 
@@ -232,15 +264,16 @@ function initializeOfferSection() {
 
             const newFlavor = this.dataset.flavor;
             currentFlavor = newFlavor;
-            
+
             // Update image gallery
             if (window.updateImageGallery) {
                 window.updateImageGallery(newFlavor);
             }
-            
+
             updatePricing();
             updatePricingDisplay();
             updateBenefitsDisplay();
+            updateTryOncePricing();
         });
     });
 
@@ -338,10 +371,29 @@ function initializeOfferSection() {
         }
     }
 
+    function updateTryOncePricing() {
+        const tryOnceCard = document.querySelector('.try-once-card');
+        if (!tryOnceCard) return;
+
+        const pricing = tryOnceData[currentSugarType][currentFlavor];
+        if (!pricing) return;
+
+        const priceElement = tryOnceCard.querySelector('.price');
+        const perDayElement = tryOnceCard.querySelector('.per-day');
+
+        if (priceElement) {
+            priceElement.innerHTML = `${pricing.price} <span class="old-price">${pricing.oldPrice}</span>`;
+        }
+        if (perDayElement) {
+            perDayElement.textContent = `${pricing.perDay} Per Day`;
+        }
+    }
+
     // Initialize display
     updatePricing();
     updatePricingDisplay();
     updateBenefitsDisplay();
+    updateTryOncePricing();
 }
 
 function initializeAccordion() {
@@ -380,5 +432,15 @@ function initializeAccordion() {
             }
         });
     });
+}
+
+function initializeTryOnceToggle() {
+    const tryOnceCard = document.getElementById('tryOnceCard');
+    
+    if (tryOnceCard) {
+        tryOnceCard.addEventListener('click', function() {
+            this.classList.toggle('expanded');
+        });
+    }
 }
 

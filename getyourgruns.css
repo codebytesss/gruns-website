@@ -141,8 +141,8 @@ body {
     transition: all 0.3s ease;
     border: .8px solid #000;
     position: relative;
-    opacity: 0.6;
-    filter: blur(1px);
+    opacity: 0.7;
+    filter: blur(0.1px);
 }
 
 .thumbnail.active {
@@ -573,6 +573,14 @@ body {
     background-color: #DFEFE7;
 }
 
+.pricing-set[data-flavor="grunny"] .price-card.active {
+    background-color: #dceac1;
+}
+
+.pricing-set[data-flavor="grunny"] .discount-badge {
+    background-color: #862010;
+}
+
 .price-info h4 {
     font-size: 16px;
     font-weight: 600;
@@ -669,8 +677,7 @@ body {
 
 .try-once-card {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 18px;
     border: .8px solid #000;
     border-radius: 15px;
@@ -679,15 +686,48 @@ body {
     transition: all 0.3s ease;
 }
 
-.try-once-card:hover {
-    border-color: #007E40;
-}
-
 .try-once-info h4 {
     font-size: 16px;
     font-weight: 600;
     color: #333;
     margin: 0 0 5px 0;
+}
+
+.try-once-expanded {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid;
+}
+
+.try-once-card.expanded .try-once-expanded {
+    display: block;
+}
+
+.try-now-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007E40;
+    color: white;
+    border: .8px solid #000;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0px #000;
+    margin-top: 10px;
+}
+
+.try-now-button:hover {
+    background-color: #006536;
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 0px #000;
+}
+
+.try-now-button:active {
+    transform: translateY(0);
+    box-shadow: 2px 2px 0px #000;
 }
 
 .tastes-like-section {
