@@ -275,7 +275,7 @@
 
 .gruns-main-app .accordion-item.open .accordion-header {
     justify-content: space-between;
-    gap: 0;
+    gap: 0.5;
 }
 
 .gruns-main-app .accordion-item.open .accordion-header::after {
@@ -325,6 +325,7 @@
 
 .gruns-main-app .accordion-content p:last-child {
     margin-bottom: 0;
+    margin-top: 10px;
 }
 
 .gruns-main-app .comparison-image {

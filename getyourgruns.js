@@ -28,20 +28,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Image sets for different flavors - used when user switches flavors
     const imageSets = {
         original: [
-            'images/Lifestyle_01_-_Adults.png',
-            'images/benefits_gallery_image.jpg',
-            'images/Nutrition_Label_LS_-_Adults_B_V2_-_Desktop.png',
-            'images/REBRAND_New_look_same_formula_Adults_Images_Image04_1.jpg',
-            'images/Lifestyle_02-_Adults.png',
-            'images/Lifestyle_03_-_Adults.png'
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/OG-Adults-GalleryImage1-LS_2x_08fc8ca9-20d8-4570-add6-67b9df1e6dc3.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/Nutrition_Label_LS_-_Adults_B_V2_-_Desktop.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/NewLookSameFormula_1x_df5a93e1-e5a5-4e81-bed2-e8be6ba2642e.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/Lifestyle_01_-_Adults.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/Lifestyle_02_-_Adults.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/Lifestyle_03_-_Adults.webp?&width=600'
         ],
         grunny: [
-            'images/gsa1.webp',
-            'images/gsa2.webp',
-            'images/gsa3.webp',
-            'images/gsa4.webp',
-            'images/gsa5.webp',
-            'images/gsa6.webp'
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage01-LS_2x_fe9547b5-9072-4a91-bae7-d31736db917f.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage02-LS_2x_56447469-9625-4b11-b44a-ace557c6dfe1.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage07-LS_2x_f1cf074f-8a60-4e59-b230-e4206722fbd8.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage03_2x_c4e00927-5b75-44a2-910a-db76748a0dc2.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage04_2x_01981aca-de14-409b-bde4-c584ed1cfc5a.webp?&width=600',
+            'https://cdn.shopify.com/s/files/1/0550/9614/8034/files/galleryimage05_2x_d345729b-4af4-4da5-9dfd-67b986b74159.webp?&width=600'
         ]
     };
 
